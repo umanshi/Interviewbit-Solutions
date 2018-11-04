@@ -2,6 +2,7 @@ vector<int> Solution::equal(vector<int> &A) {
     map<int, vector<int> > m;
     int sum;
     vector<int> ans(4,INT_MAX);
+    
     for(int i=0; i<A.size(); i++){
         for(int j=i+1; j<A.size(); j++){
             sum = A[i] + A[j];
@@ -15,17 +16,22 @@ vector<int> Solution::equal(vector<int> &A) {
                 temp_ans.push_back(m[sum][1]);
                 temp_ans.push_back(i);
                 temp_ans.push_back(j);
+                
                 if(temp_ans[0]<ans[0]){ //cout<<"Case 1"<<endl;
-                    ans.swap(temp_ans); }
+                    ans.swap(temp_ans); 
+                }
                 else if(temp_ans[0]==ans[0]){ //cout<<"Case 2"<<endl;
                     if(temp_ans[1]<ans[1]){
-                        ans.swap(temp_ans); }
+                        ans.swap(temp_ans);
+                    }
                     else if(temp_ans[1]==ans[1]){ //cout<<"Case 3"<<endl;
                         if(temp_ans[2]<ans[2]){
-                            ans.swap(temp_ans);}  
+                            ans.swap(temp_ans);
+                        }  
                         else if(temp_ans[2]==ans[2]){ //cout<<"Case 4"<<endl;
-                            if(temp_ans[3]<ans[3])
-                                {ans.swap(temp_ans);}  
+                            if(temp_ans[3]<ans[3]){
+                                ans.swap(temp_ans);
+                            }  
                         }
                     }
                 }    
