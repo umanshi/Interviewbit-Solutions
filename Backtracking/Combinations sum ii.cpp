@@ -3,26 +3,24 @@ bool similar(vector<int> A, vector<int> B)
     if(A.size()!=B.size())
         return false;
     for(int i=0; i<A.size(); i++)
-    {
-        if(A[i]!=B[i])
+    {   if(A[i]!=B[i])
             return false;
     }
     return true;
 }
 void util(vector<int> A, int B, vector<int>& temp, vector<vector<int> > &ans, int i)
-{
-    if(B==0){
-        if(ans.size()==0)
-        {
-            ans.push_back(temp);
+{   
+    if(B==0)
+    {   if(ans.size()==0)
+        {   ans.push_back(temp);
             return;
         }
         else if(!similar(temp, ans[ans.size()-1]))
-            {ans.push_back(temp);
+        {   ans.push_back(temp);
             return;
-            }
+        }
     }
-    if(i==A.size() || B<0)
+    if(i==A.size() || B<0 )
         return;
     temp.push_back(A[i]);
     util(A, B-A[i], temp, ans, i+1);
