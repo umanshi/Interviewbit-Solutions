@@ -1,3 +1,34 @@
+void util (vector<string> allStrings, vector<string> &ans, string temp, int c){   
+    if(c==allStrings.size()){
+        ans.push_back(temp);
+        return;
+    }
+    for(int i=0; i<allStrings[c].length(); i++){   
+        temp+=allStrings[c][i];
+        util(allStrings, ans, temp, c+1); 
+        temp = temp.substr(0, temp.length()-1); 
+    }
+}
+vector<string> Solution::letterCombinations(string A) {
+    map<int, string> m;
+    m[2]="abc"; m[3]="def"; m[4] = "ghi"; m[5] = "jkl";
+    m[6]="mno"; m[7]="pqrs"; m[8] = "tuv"; m[9] = "wxyz";
+    m[0] = "0"; m[1] = "1";
+    
+    vector<string> allStrings;
+    
+    for(int i=0; i<A.length(); i++)
+        allStrings.push_back(m[A[i]-'0']);
+    
+    vector<string> ans;
+    string temp = "";
+    util(allStrings, ans, temp, 0);
+    return ans;
+}
+
+//_____________________ Detailed Version --- Rich with juicy comments --- _______________________
+
+
 void util (vector<string> allStrings, vector<string> &ans, string temp, int c)
 {   // In this function we are trying to fill the cth place in the ans
     // by picking the cth string -> allStrings[c] and filling up the cth location of temp
