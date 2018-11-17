@@ -11,11 +11,10 @@ string Solution::solve(int A, int B, int C, int D, vector<int> &E, vector<int> &
             }
         }
     }
-    if(mat[A][B] == true)
+    if(mat[A][B] == true || mat[0][0]==true)
         return "NO";
     queue<pair<int, int> > q;
     q.push(make_pair(0,0));
-    mat[0][0] = 1;
     int move_x[] = {1,-1, 0, 0, 1, 1,-1,-1};
     int move_y[] = {0, 0, 1,-1, 1,-1, 1,-1};
     while(!q.empty())
